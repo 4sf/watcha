@@ -1,11 +1,19 @@
 Rails.application.routes.draw do
-  resources :posts
 
-  get 'home/index'
+  resources :movies
+  # resources :movies do
+  #   member do
+  #     post 'review'
+  #   end
+  # end
+
+  post '/movies/:id/review' => 'movies#review'
+
+  resources :posts
 
   devise_for :users
 
-  root 'home#index'
+  root 'movies#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

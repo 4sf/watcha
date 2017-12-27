@@ -5,8 +5,8 @@
       <h1 class="jumbotron-heading">WATCH!</h1>
       <p class="lead text-muted">영화평점 사이트 왓챠!</p>
       <p>
-        <a href="/posts" class="btn btn-primary">게시판</a>
-        <a href="#" class="btn btn-secondary">Secondary action</a>
+        <%= link_to "게시판", posts_path, class: "btn btn-primary"%>
+        <%= link_to "영화 추가하기", new_movie_path, class: "btn btn-secondary" if check_admin %>
       </p>
     </div>
   </section>
@@ -18,7 +18,8 @@
         <% @movies.each do |movie| %>
           <div class="card">
             <img height="280px" src="<%= movie.poster %>" alt="Card image cap">
-            <a class="card-text" href="/home/show/<%= movie.id %>">
+            <p class="card-title"><%= movie.average == 0 ? "리뷰가 없어유ㅠㅠ" : movie.average %></p>
+            <a class="card-text" href="/movies/<%= movie.id %>">
               <%= movie.title %>
             </a>
           </div>
