@@ -25,13 +25,22 @@ fake 왓챠 based on rails
 - 한글 버전
 - view 수정 가능
 - nickname이라는 칼럼을 추가함
-  * 추가방법
-    1. devise 모델을 수정 `db/migrate/XXXXXXX_devise_create_users.rb`
+#### 추가방법
+##### 1. devise 모델을 수정 `db/migrate/XXXXXXX_devise_create_users.rb`
 ```ruby
-t.string :nickname,           null: false, default: ""
+class DeviseCreateUsers < ActiveRecord::Migration
+  def change
+    create_table :users do |t|
+      ...
+      # nickname 칼럼 추가
+      t.string :nickname, null: false, default: ""
 
+      ...
+    end
+  end
+end
 ```
-    2. `app/controller/application_controller.rb`에 아래 코드 추가
+#####2. `app/controller/application_controller.rb`에 아래 코드 추가
 ```ruby
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
