@@ -248,6 +248,7 @@ DEPENDENCIES
   rails_db
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
+  simple_form
   spring
   sqlite3
   turbolinks
