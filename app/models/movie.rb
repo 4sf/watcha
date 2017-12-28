@@ -1,4 +1,6 @@
 class Movie < ActiveRecord::Base
+  mount_uploader :poster, PhotoUploader
+
   has_many :reviews
 
   def number

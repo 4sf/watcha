@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  get '/admin/index'
+
+  put '/admin/to_manager/:id' => 'admin#to_manager'
+  put '/admin/to_user/:id' => 'admin#to_user'
+  # namespace :admin do
+  #   get '/users/index' => 'users#index'
+  # end
+
   resources :movies
   # resources :movies do
   #   member do
@@ -8,6 +16,7 @@ Rails.application.routes.draw do
   # end
 
   post '/movies/:id/review' => 'movies#review'
+  post '/posts/:id/comments' => 'posts#comments'
 
   resources :posts
 

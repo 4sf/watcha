@@ -6,4 +6,7 @@ class HomeController < ApplicationController
   def show
     @movie = Movie.find(params[:id])
   end
+
+  def privacy
+  end
 end

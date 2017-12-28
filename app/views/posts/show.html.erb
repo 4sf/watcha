@@ -13,5 +13,20 @@
   <%= @post.user.nickname %>
 </p>
 
+<p>
+  <strong>Image:</strong>
+  <img src="<%= @post.image.small %>">
+</p>
+
 <%= link_to 'Edit', edit_post_path(@post) %> |
 <%= link_to 'Back', posts_path %>
+
+<%= form_tag "/posts/#{@post.id}/comments", method: :post do %>
+  <%= text_field_tag :content %>
+  <%= submit_tag "댓글쓰기" %>
+<% end %>
+
+<% @post.comments.each do |comment| %>
+  <p>작성자 : <%= comment.user.nickname %></p>
+  <p>내용 : <%= comment.content %></p>
+<% end %>

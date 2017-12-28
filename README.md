@@ -63,3 +63,10 @@ class ApplicationController < ActionController::Base
   end
 end
 ```
+
+## 4. 사진 업로드
+
+## 5. 유저 역할 구분 / 관리자 페이지
+- User model -> :role, :string, default: "user"
+- role = ["user", "manager", "admin"] (유저는 3개의 역할군으로 나눠져 있다.)
+- 

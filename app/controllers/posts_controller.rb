@@ -1,11 +1,13 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!, except: [:index, :privacy]
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
+  layout false
   # GET /posts
   # GET /posts.json
   def index
     @posts = Post.all
+    render 'index'
   end
 
   # GET /posts/1
@@ -63,6 +65,19 @@ class PostsController < ApplicationController
     end
   end
 
+  def comments
+    Comment.create(
+      content: params[:content],
+      user_id: current_user.id,
+      post_id: params[:id]
+    )
+    redirect_to :back
+  end
+
+  def privacy
+    render template: 'etc/promise'
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_post
@@ -71,6 +86,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :content)
+      params.require(:post).permit(:title, :content, :image)
     end
 end
