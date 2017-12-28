@@ -15,9 +15,15 @@
 
   <%= render 'layouts/admin_header'%>
 
+  <%= render 'layouts/admin_sidebar'%>
+
   <p id="notice"><%= flash[:notice] %></p>
 
-<%= yield %>
+  <div class="container-fluid">
+    <div class="row">
+      <%= yield %>
+    </div>
+  </div>
 
 </body>
 </html>

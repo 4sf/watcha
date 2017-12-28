@@ -9,6 +9,9 @@ class AdminController < ApplicationController
 
   def posts_destroy
     # 특정 게시글을 지운다.
+    @post = Post.find(params[:id])
+    @post.destroy
+    redirect_to :back, notice: "#{params[:id]}번 게시글이 삭제되었습니다."
   end
 
   def reviews
@@ -17,6 +20,9 @@ class AdminController < ApplicationController
 
   def reviews_destroy
     # 특정 리뷰를 지운다.
+    @review = Review.find(params[:id])
+    @review.destroy
+    redirect_to :back, notice: "#{params[:id]}번 리뷰가 삭제되었습니다."
   end
 
   def to_manager

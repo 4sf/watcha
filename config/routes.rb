@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
 
   get '/admin/index'
+  get '/admin/posts'
+  get '/admin/reviews'
+
+  delete '/admin/posts_destroy/:id' => 'admin#posts_destroy'
+  delete '/admin/reviews_destroy/:id' => 'admin#reviews_destroy'
+
 
   put '/admin/to_manager/:id' => 'admin#to_manager'
   put '/admin/to_user/:id' => 'admin#to_user'
